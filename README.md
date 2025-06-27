@@ -4,6 +4,9 @@ An interactive map visualizing the locations and live views of publicly accessib
 
 Built using React, Leaflet, and the City of Calgary's open data, this project highlights the reach of urban surveillance using live feeds and geospatial data.
 
+![image](https://github.com/user-attachments/assets/474d2e6e-eabb-43b9-b33f-8dd8274b58dd)
+
+
 ---
 
 ## 🔍 What It Does
