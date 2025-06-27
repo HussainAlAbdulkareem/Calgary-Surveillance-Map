@@ -4,7 +4,19 @@ import { MapContainer, TileLayer } from 'react-leaflet';
 import { useEffect, useState } from "react";
 import { Marker, Popup } from "react-leaflet";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
 
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+});
 
 
 function App() {
@@ -21,8 +33,11 @@ function App() {
 }, []);
 
   return (
-    
-    
+    <div>
+    <p style={{ padding: "10px" }}>
+    Cameras loaded: {cameraData.length}
+    </p>
+
     <MapContainer
   center={[51.0447, -114.0719]} // Calgary coordinates
   zoom={13}
@@ -34,15 +49,22 @@ function App() {
 
   {cameraData.map((feature, idx) => {
   const [lng, lat] = feature.geometry.coordinates;
-  const label = feature.properties.location;
+  const location_label = feature.properties.camera_location;
+  const camera_url = feature.properties.camera_url.url;
 
   return (
     <Marker key={idx} position={[lat, lng]}>
-      <Popup>{label}</Popup>
+      <Popup>
+        <strong>{location_label}</strong>
+
+        <br />
+        <img src={camera_url} alt="Live view" width="200" />
+        </Popup>
     </Marker>
   );
 })}
 </MapContainer>
+</div>
   );
 }
 
