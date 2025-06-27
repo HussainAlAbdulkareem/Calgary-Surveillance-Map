@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { MapContainer, TileLayer } from 'react-leaflet';
 import { useEffect, useState } from "react";
@@ -58,7 +57,7 @@ function App() {
         <strong>{location_label}</strong>
 
         <br />
-        <img src={camera_url} alt="Live view" width="200" />
+        <a href={camera_url} target='_blank'><img src={camera_url} alt="Live view" width="200" /></a>
         </Popup>
     </Marker>
   );
